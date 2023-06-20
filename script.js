@@ -1,35 +1,38 @@
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+import "./api.js";
+import { requestAPI } from "./api.js";
 
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const micBtn = document.getElementById('microphone');
-const screen = document.getElementById('screen');
 const panelsData = document.getElementById('panels-data');
 
-const commands = ['mangia', 'balla', 'dormi'];
+// Prendiamo il div della risposta
+const chatBox = document.getElementById('chatbox');
+
+let testo = [];
 
 // Inizializzazione
-const recognition = new SpeechRecognition();
+const recognition = new SpeechRecognition(); // crea l'oggetto
 
 function onStartListening() {
-    recognition.start();    
+    recognition.start();
     panelsData.classList.add('listening');
 }
 
-function onResult(e) {    
-    const testo = e.results[0][0].transcript;
+function onResult(e) {
+    testo.push(e.results[0][0].transcript);
 
-    const action = commands.find(function(command) {
-        return testo.toLowerCase().includes(command);
-    });
+    async function recuperaRisposta() {
+        const risposta = await requestAPI(testo);
+        console.log(risposta);
+        chatBox.innerHTML = risposta;
+    }
 
-    const actionClassname = 'codigotchi-screen_' + action;
+    console.log(e.results);
+    console.log(testo);
+    recuperaRisposta();
 
-    screen.classList.add(actionClassname);
     panelsData.classList.remove('listening');
-    
-    // Mostro l'animazione della gif per 2 secondi
-    setTimeout(function() {
-        screen.classList.remove(actionClassname);
-    }, 2000);
+
 }
 
 function onError(e) {

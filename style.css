@@ -79,9 +79,7 @@ img {
     background-image: url('./images/balla.gif');
 }
 
-.commands {
-    /*  */
-}
+
 
 .commands ul {
     width: 100%;
@@ -98,6 +96,11 @@ img {
 .panels {
     position: relative;
     margin-bottom: 16px;
+    margin-top: 250px;
+}
+
+.chatbox {
+    color: darkred;
 }
 
 .panel {
