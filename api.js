@@ -25,7 +25,7 @@ export const requestAPI = async (
                 messages: [
                     {
                         'role': `system`,
-                        'content': `${testo} rispondimi in relazione alla risposta di prima`,
+                        'content': `${testo}`,
                     }
                 ],
                 frequency_penalty: frequency_penalty,

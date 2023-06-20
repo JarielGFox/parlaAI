@@ -4,6 +4,7 @@ import { requestAPI } from "./api.js";
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const micBtn = document.getElementById('microphone');
 const panelsData = document.getElementById('panels-data');
+const container = document.querySelector('.container');
 
 // Prendiamo il div della risposta
 const chatBox = document.getElementById('chatbox');
@@ -15,23 +16,38 @@ const recognition = new SpeechRecognition(); // crea l'oggetto
 
 function onStartListening() {
     recognition.start();
-    panelsData.classList.add('listening');
 }
 
 function onResult(e) {
     testo.push(e.results[0][0].transcript);
 
+    let divRichiesta = document.createElement('div');
+    divRichiesta.classList.add('box-utente');
+
+    divRichiesta.innerHTML = `<p>
+        ${e.results[0][0].transcript}
+    </p >`;
+
+    container.appendChild(divRichiesta);
+
     async function recuperaRisposta() {
         const risposta = await requestAPI(testo);
         console.log(risposta);
-        chatBox.innerHTML = risposta;
+
+        let divRisposta = document.createElement('div');
+        divRisposta.classList.add('box-system');
+
+        divRisposta.innerHTML = `<p>
+            ${risposta}
+        </p>`;
+
+        container.appendChild(divRisposta);
+
     }
 
     console.log(e.results);
     console.log(testo);
     recuperaRisposta();
-
-    panelsData.classList.remove('listening');
 
 }
 
