@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Talking Duck</title>
+<html lang="it">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Week - Codigotchi</title>
+    
     <!-- Manifest -->
     <link rel="manifest" href="site.webmanifest" />
 
-    <!-- Icona -->
+    <!-- Icona Tab Browser -->
     <link rel="icon" href="images/icon.png" />
 
     <!-- Font -->
@@ -17,45 +18,52 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 
-    <!-- Style -->
+    <!-- Stili -->
     <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+</head>
+
+<body>
+
     <div class="container">
-      <!-- Intestazione -->
-      <header>
-        <img src="images/logo.png" alt="Logo Coding Week" />
-      </header>
+        <header>
+            <img src="images/logo.png" alt="Coding Week Logo">
+        </header>
 
-      <!-- Contenuto principale -->
-      <main>
-        <!-- Casella di testo -->
-        <textarea placeholder="Scrivi qui..."></textarea>
+        <main>
+            <!-- Codigotchi e schermo -->
+            <section class="codigotchi">
+                <img src="images/codigotchi.png" alt="">
+                <div id="screen" class="codigotchi-screen"></div>
+            </section>
+            
+            <!-- Pannelli -->
+            <section id="panels-data" class="panels">
+                <!-- Pannello Microfono -->
+                <div class="panel panel-microphone">
+                    <button id="microphone">
+                        <img src="images/mic.png" alt="microphone">
+                    </button>
+                    <h2>Attiva il microfono</h2> 
+                </div>
 
-        <!-- Controlli -->
-        <div class="controls">
-          <!-- Play Button -->
-          <button>
-            <img src="images/play.png" alt="play" />
-          </button>
-
-          <!-- Controlli del tono -->
-          <div class="pitch-controls">
-            <label>Pitch</label>
-            <input type="range" min="0.1" max="2" step="0.1" />
-          </div>
-        </div>
-
-        <!-- Paperella -->
-        <figure>
-          <img class="static-duck" src="images/talking-duck-static.png" alt="static duck" />
-
-          <img class="animated-duck" src="images/talking-duck-animated.gif" alt="animated duck" />
-        </figure>
-      </main>
+                <!-- Pannello Comandi -->
+                <div class="panel panel-commands">                
+                    <h2>Interagisci coi comandi vocali!</h2> 
+                    <h3>Comandi supportati</h3>                
+                    <div class="commands">
+                        <ul>
+                            <li>Mangia</li>
+                            <li>Balla</li>
+                            <li>Dormi</li>
+                        </ul>            
+                    </div>
+                </div>            
+            </section>
+            
+        </main>
     </div>
 
-    <!-- Logica JS -->
     <script src="script.js"></script>
-  </body>
+</body>
+
 </html>

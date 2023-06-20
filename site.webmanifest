@@ -1,14 +1,11 @@
 {
-  "short_name": "Duck",
-  "name": "Talking Duck",
-  "icons": [
-    {
-      "src": "images/icon.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    }
-  ],
-  "background_color": "#f71469",
-  "theme_color": "#f71469",
+  "short_name": "Codigotchi",
+  "name": "Codigotchi",
+  "icons": [{
+    "src": "images/icon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }],
+  "theme_color": "#3535EC",
   "display": "fullscreen"
 }
