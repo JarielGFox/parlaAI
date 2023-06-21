@@ -19,20 +19,60 @@ main {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    padding: 16px;
+    padding: 16px 0;
 }
+
+
+/***************
+ STILE BOX CONVERSAZIONI
+ ***************/
+
+.box-utente, .box-system {
+    
+    width: 30%;
+}
+
+.box-header {
+    border-bottom: 1px solid lightgrey;
+    color:grey;
+    margin-top: 8px;
+    width: 100%;
+    padding-bottom: 4px;
+}
+
+.padd-r{
+     padding-right: 32px;
+}
+.padd-l{
+    padding-left: 32px;
+}
+
 
 .box-utente {
     align-self: flex-end;
-    background-color: whitesmoke;
-    width: 50%;
+    background-color:rgb(240, 240, 240);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    text-align: right;  
+}
+
+.box-utente p {
+    padding: 16px 32px 16px 16px;
+}
+
+.box-system p {
+    padding: 16px 16px 16px 32px;
 }
 
 .box-system {
+    
+    margin: 10px 0;
     align-items: flex-start;
-    background-color: aqua;
-    width: 50%;
+    background-color: whitesmoke; 
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
+
 
 .chat-input {
     position: fixed;
@@ -56,3 +96,11 @@ button {
     margin: 12px;
     color: whitesmoke;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .box-utente, .box-system {
+    
+        width: 60%;
+    }
+  }
