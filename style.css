@@ -20,6 +20,14 @@ main {
     flex-direction: column;
     margin: 0 auto;
     padding: 16px 0;
+    overflow: auto;
+    /* min-height: calc(100vh + 200px); */
+}
+
+.separatore {
+    width: 100%;
+    height: 20px;
+    margin-top: 50px;
 }
 
 
@@ -64,7 +72,6 @@ main {
 }
 
 .box-system {
-    
     margin: 10px 0;
     align-items: flex-start;
     background-color: whitesmoke; 

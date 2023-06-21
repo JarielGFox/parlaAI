@@ -21,5 +21,4 @@ const appendMessage = (position, text, element) => {
         ;
     element.appendChild(divRichiesta);
 }
-
 // e.results[0][0].transcript

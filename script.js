@@ -21,7 +21,9 @@ function sendMessage(text) {
         appendMessage('l', '<img class="loader" src="./images/miniloading.gif">', container);
     }, 1000)
 
+
     async function recuperaRisposta() {
+
         const risposta = await requestAPI(testo);
         console.log(risposta); //da togliere in produzione
 
@@ -30,11 +32,11 @@ function sendMessage(text) {
 
         appendMessage('l', risposta, container);
 
+        window.scrollTo(0, window.innerHeight); //a capo automatico per il messaggio
     }
 
     console.log(testo); //da togliere in produzione
     recuperaRisposta();
-
 }
 
 chatButton.addEventListener('click', (event) => {
