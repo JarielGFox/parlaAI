@@ -47,7 +47,6 @@ main {
     padding-left: 32px;
 }
 
-
 .box-utente {
     align-self: flex-end;
     background-color:rgb(240, 240, 240);
@@ -73,6 +72,9 @@ main {
     border-bottom-right-radius: 15px;
 }
 
+.loader {
+    margin-left: -12px;
+}
 
 .chat-input {
     position: fixed;
