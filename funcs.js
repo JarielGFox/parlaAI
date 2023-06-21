@@ -20,5 +20,9 @@ const appendMessage = (position, text, element) => {
     </p>`
         ;
     element.appendChild(divRichiesta);
+
+    const windowTo = window.innerHeight + 20;
+    window.scrollTo(0, windowTo); //a capo automatico per il messaggio
 }
+
 // e.results[0][0].transcript
