@@ -24,15 +24,20 @@ function onResult(e) {
 
     appendMessage('r', e.results[0][0].transcript, container);
 
+    setTimeout(function () {
+        appendMessage('l', '<img class="loader" src="./images/miniloading.gif">', container);
+    }, 1000)
+
     async function recuperaRisposta() {
         const risposta = await requestAPI(testo);
         console.log(risposta);
 
-        // setTimeout(function () {
 
-        // }, 1000)
 
-        // appendMessage('l', risposta, container);
+        let loader = document.querySelector('.loader');
+        loader.parentElement.parentElement.remove();
+
+        appendMessage('l', risposta, container);
 
     }
 

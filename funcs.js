@@ -12,7 +12,7 @@ const appendMessage = (position, text, element) => {
         divRichiesta.classList.add('box-system');
     }
 
-    divRichiesta.innerHTML = `<div class='box-header padd-'${position} >
+    divRichiesta.innerHTML = `<div class='box-header padd-${position}' >
         ${position == 'r' ? 'Tu' : 'Parl-Ai'}
     </div>
     <p>
