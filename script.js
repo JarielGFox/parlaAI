@@ -5,6 +5,7 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 const micBtn = document.getElementById('microphone');
 const panelsData = document.getElementById('panels-data');
 const container = document.querySelector('.container');
+// const textBox = getElementById('chat-text');
 
 // Prendiamo il div della risposta
 const chatBox = document.getElementById('chatbox');
@@ -21,27 +22,12 @@ function onStartListening() {
 function onResult(e) {
     testo.push(e.results[0][0].transcript);
 
-    let divRichiesta = document.createElement('div');
-    divRichiesta.classList.add('box-utente');
-
-    divRichiesta.innerHTML = `<p>
-        ${e.results[0][0].transcript}
-    </p >`;
-
-    container.appendChild(divRichiesta);
-
     async function recuperaRisposta() {
         const risposta = await requestAPI(testo);
         console.log(risposta);
 
-        let divRisposta = document.createElement('div');
-        divRisposta.classList.add('box-system');
-
-        divRisposta.innerHTML = `<p>
-            ${risposta}
-        </p>`;
-
-        container.appendChild(divRisposta);
+        appendMessage('r', e.results[0][0].transcript, container);
+        appendMessage('l', risposta, container);
 
     }
 
