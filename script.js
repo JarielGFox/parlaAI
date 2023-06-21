@@ -22,12 +22,17 @@ function onStartListening() {
 function onResult(e) {
     testo.push(e.results[0][0].transcript);
 
+    appendMessage('r', e.results[0][0].transcript, container);
+
     async function recuperaRisposta() {
         const risposta = await requestAPI(testo);
         console.log(risposta);
 
-        appendMessage('r', e.results[0][0].transcript, container);
-        appendMessage('l', risposta, container);
+        // setTimeout(function () {
+
+        // }, 1000)
+
+        // appendMessage('l', risposta, container);
 
     }
 
