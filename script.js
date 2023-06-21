@@ -31,8 +31,6 @@ function sendMessage(text) {
         loader.parentElement.parentElement.remove();
 
         appendMessage('l', risposta, container);
-
-        window.scrollTo(0, window.innerHeight); //a capo automatico per il messaggio
     }
 
     console.log(testo); //da togliere in produzione
