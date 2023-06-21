@@ -6,6 +6,8 @@ const micBtn = document.getElementById('microphone');
 const chatButton = document.getElementById('send');
 const panelsData = document.getElementById('panels-data');
 const container = document.querySelector('.container');
+const clearHistory = document.querySelector('#clear-history');
+const separatore = document.querySelector('.separatore');
 
 // Prendiamo il div della risposta
 const chatBox = document.getElementById('chatbox');
@@ -67,3 +69,14 @@ function onError(e) {
 micBtn.addEventListener('click', onStartListening);
 recognition.addEventListener('result', onResult);
 recognition.addEventListener('error', onError);
+
+clearHistory.addEventListener('click', () => {
+    testo = [];
+    separatore.innerHTML = 'Congratulazioni, cronologia pulita correttamente.';
+
+    setTimeout(() => {
+        separatore.innerHTML = '';
+    }, 3000);
+
+    console.log(testo);
+});
