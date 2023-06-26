@@ -20,7 +20,7 @@ const container = document.querySelector('.container');
 const clearHistory = document.querySelector('#clear-history');
 const separatore = document.querySelector('.separatore');
 
-// Prendiamo il div della risposta
+// textArea della chat
 const chatBox = document.getElementById('chat-text');
 
 // da qui iniziano funzioni del "chatbot"
