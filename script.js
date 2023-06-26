@@ -1,6 +1,14 @@
 import "./api.js";
 import { requestAPI } from "./api.js";
 
+// Mostra le voci disponibili
+let voices = [];
+speechSynthesis.addEventListener('voiceschanged', function () {
+    voices = speechSynthesis.getVoices();
+    // in console stampiamo l'elenco delle voci possibili da utilizzare
+    console.log(voices);
+})
+
 // INIZIO VARIABILI CODICE
 
 // variabili ID e selettori
@@ -29,7 +37,6 @@ function sendMessage(text) {
 
 
     async function recuperaRisposta() {
-
         const risposta = await requestAPI(testo);
         console.log(risposta); //da togliere in produzione
 
@@ -37,7 +44,28 @@ function sendMessage(text) {
         loader.parentElement.parentElement.remove();
 
         appendMessage('l', risposta, container);
+
+        // Preparo una frase per il Sintetizzatore vocale
+        const utterance = new SpeechSynthesisUtterance(risposta);
+
+        // specifichiamo altri dettagli della frase
+        utterance.volume = 1;
+        utterance.rate = 1;
+
+        const femaleVoice = voices.find(function (voice) {
+            if (voice.name.includes('Elsa')) {
+                return true;
+            }
+        });
+
+        if (femaleVoice) { // dà la voce se trova un match
+            utterance.voice = femaleVoice;
+        }
+
+        // facciamo parlare la paperella
+        speechSynthesis.speak(utterance);
     }
+
 
     console.log(testo); //da togliere in produzione
     recuperaRisposta();
