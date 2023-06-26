@@ -1,5 +1,6 @@
 import "./api.js";
 import { requestAPI } from "./api.js";
+import {appendMessage} from "./funcs.js";
 
 // Mostra le voci disponibili
 let voices = [];
@@ -110,6 +111,7 @@ recognition.addEventListener('error', onError);
 // tasto pulisci cronologia
 clearHistory.addEventListener('click', () => {
     testo = [];
+    container.innerHTML = "";
     separatore.innerHTML = 'Congratulazioni, cronologia pulita correttamente.';
 
     setTimeout(() => {

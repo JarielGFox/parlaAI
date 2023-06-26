@@ -3,7 +3,7 @@ const sendMessage = () => {
     testo.push(textBox.value.toLowerCase());
 }
 
-const appendMessage = (position, text, element) => {
+export const appendMessage = (position, text, element) => {
     let divRichiesta = document.createElement('div');
 
     if (position == 'r') {

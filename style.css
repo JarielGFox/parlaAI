@@ -89,10 +89,29 @@ main {
     bottom: 0;
     width: 100%;
     align-items: center;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
 }
 
-.chat-input textarea {
-    height: 45px;
+.chat-box {
+    display: flex;
+    max-height: 100%;
+    max-width: 100%;
+    padding: 6px;
+    flex-wrap: nowrap;
+    
+}
+
+#chat-text {
+  padding: 12px 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  margin-right: 12px;
+  resize: none;
+  width: 60%;
 }
 
 
@@ -101,11 +120,15 @@ button {
     background-color: #f71469;
     border-radius: 8px;
     cursor: pointer;
-    padding: 12px 24px;
-    margin: 12px;
+    padding: 12px 12px;
     color: whitesmoke;
+    margin: 0 6px;
+    width: 10%;
+    text-align: center;
 }
-
+#clear-history {
+    width: 20%;
+}
 
 @media only screen and (max-width: 600px) {
     .box-utente, .box-system {
