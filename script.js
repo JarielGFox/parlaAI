@@ -21,13 +21,14 @@ const clearHistory = document.querySelector('#clear-history');
 const separatore = document.querySelector('.separatore');
 
 // textArea della chat
-const chatInput = document.querySelector('#chat-input');
+const chatInput = document.getElementById('chat-input');
 const chatBox = document.getElementById('chat-text');
 
 // da qui iniziano funzioni del "chatbot"
 let testo = [];
 
 function sendMessage(text) {
+
     testo.push(text);
 
     appendMessage('r', text, container);
@@ -35,6 +36,7 @@ function sendMessage(text) {
     setTimeout(function () {
         appendMessage('l', '<img class="loader" src="./images/miniloading.gif">', container);
     }, 1000)
+
 
 
     async function recuperaRisposta() {
@@ -76,8 +78,14 @@ function sendMessage(text) {
 chatButton.addEventListener('click', (event) => {
     let text = event.target.previousElementSibling.value;
     console.log(text);
+
+
     sendMessage(text);
     event.target.previousElementSibling.value = '';
+
+    // Controllare problema di logica e vedere perchè non riappare
+    // chatInput.classList.add('hidden');
+    // console.log(chatInput);
 });
 
 // Inizializzazione
