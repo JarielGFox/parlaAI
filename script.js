@@ -21,7 +21,7 @@ const clearHistory = document.querySelector('#clear-history');
 const separatore = document.querySelector('.separatore');
 
 // Prendiamo il div della risposta
-const chatBox = document.getElementById('chatbox');
+const chatBox = document.getElementById('chat-text');
 
 // da qui iniziano funzioni del "chatbot"
 let testo = [];
@@ -80,13 +80,23 @@ chatButton.addEventListener('click', (event) => {
 
 // Inizializzazione
 const recognition = new SpeechRecognition(); // crea l'oggetto
+recognition.interimResults = true; // attiva l'interim result
 
 function onStartListening() {
     recognition.start();
 }
 
+// tramite evento onResult facciamo catturare il testo parlato
 function onResult(e) {
-    sendMessage(e.results[0][0].transcript);
+    let interim_transcript = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+        if (e.results[i].isFinal) {
+            sendMessage(e.results[i][0].transcript);
+        } else {
+            interim_transcript += e.results[i][0].transcript;
+            chatBox.value = interim_transcript;
+        }
+    }
 }
 
 function onError(e) {
