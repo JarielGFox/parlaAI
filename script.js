@@ -1,6 +1,5 @@
 import "./api.js";
 import { requestAPI } from "./api.js";
-import {appendMessage} from "./funcs.js";
 
 // Mostra le voci disponibili
 let voices = [];
@@ -22,6 +21,7 @@ const clearHistory = document.querySelector('#clear-history');
 const separatore = document.querySelector('.separatore');
 
 // textArea della chat
+const chatInput = document.querySelector('#chat-input');
 const chatBox = document.getElementById('chat-text');
 
 // da qui iniziano funzioni del "chatbot"
@@ -70,6 +70,7 @@ function sendMessage(text) {
 
     console.log(testo); //da togliere in produzione
     recuperaRisposta();
+    chatInput.classList.remove('hidden');
 }
 
 chatButton.addEventListener('click', (event) => {
@@ -85,6 +86,7 @@ recognition.interimResults = true; // attiva l'interim result
 
 function onStartListening() {
     recognition.start();
+    chatInput.classList.add('hidden');
 }
 
 // tramite evento onResult facciamo catturare il testo parlato

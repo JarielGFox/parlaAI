@@ -30,7 +30,6 @@ main {
     margin-top: 50px;
 }
 
-
 /***************
  STILE BOX CONVERSAZIONI
  ***************/
@@ -100,7 +99,6 @@ main {
     max-width: 100%;
     padding: 6px;
     flex-wrap: nowrap;
-    
 }
 
 #chat-text {
@@ -136,3 +134,8 @@ button {
         width: 60%;
     }
   }
+
+/* NASCONDE LE COSE */
+.hidden {
+    display: none;
+}
