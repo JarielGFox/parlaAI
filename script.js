@@ -15,9 +15,9 @@ speechSynthesis.addEventListener('voiceschanged', function () {
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const micBtn = document.getElementById('microphone');
 const chatButton = document.getElementById('send');
-const panelsData = document.getElementById('panels-data');
 const container = document.querySelector('.container');
 const clearHistory = document.querySelector('#clear-history');
+const muteButton = document.getElementById('shush');
 const separatore = document.querySelector('.separatore');
 
 // textArea della chat
@@ -117,6 +117,11 @@ function onError(e) {
 micBtn.addEventListener('click', onStartListening);
 recognition.addEventListener('result', onResult);
 recognition.addEventListener('error', onError);
+
+muteButton.addEventListener('click', () => {
+    speechSynthesis.cancel();
+});
+
 
 // tasto pulisci cronologia
 clearHistory.addEventListener('click', () => {
