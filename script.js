@@ -25,7 +25,12 @@ const chatInput = document.getElementById('chat-input');
 const chatBox = document.getElementById('chat-text');
 
 // da qui iniziano funzioni del "chatbot"
+
+// l'array della chat con l'API
 let testo = [];
+
+// variabile per gestire i controlli
+let isRequestInProgress = false;
 
 function sendMessage(text) {
 
