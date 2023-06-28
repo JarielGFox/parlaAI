@@ -34,6 +34,19 @@ let isRequestInProgress = false;
 
 function sendMessage(text) {
 
+    if (isRequestInProgress) {
+        return; //sendMessage non viene invocata se c'è già una richiesta in corso
+    }
+
+    isRequestInProgress = true; //switcha il valore a true quando c'è una richiesta
+
+    // cambia la classe visiva così l'utente è portato a pensare che non vanno
+    micBtn.classList.add('disabled');
+    chatButton.classList.add('disabled');
+    muteButton.classList.add('disabled');
+    clearHistory.classList.add('disabled');
+    chatBox.disabled = true;
+
     testo.push(text);
 
     appendMessage('r', text, container);
@@ -70,14 +83,22 @@ function sendMessage(text) {
             utterance.voice = femaleVoice;
         }
 
-        // facciamo parlare la paperella
+        //facciamo parlare la nostra AI
         speechSynthesis.speak(utterance);
+
+        //switcha il valore a false quando la richiesta è eseguita
+        isRequestInProgress = false;
+
+        micBtn.classList.remove('disabled');
+        chatButton.classList.remove('disabled');
+        muteButton.classList.remove('disabled');
+        clearHistory.classList.remove('disabled');
+        chatBox.disabled = false;
     }
 
 
     console.log(testo); //da togliere in produzione
     recuperaRisposta();
-    chatInput.classList.remove('hidden');
 }
 
 chatButton.addEventListener('click', (event) => {
@@ -99,7 +120,6 @@ recognition.interimResults = true; // attiva l'interim result
 
 function onStartListening() {
     recognition.start();
-    chatInput.classList.add('hidden');
 }
 
 // tramite evento onResult facciamo catturare il testo parlato
