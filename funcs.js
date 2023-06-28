@@ -13,7 +13,7 @@ const appendMessage = (position, text, element) => {
     }
 
     divRichiesta.innerHTML = `<div class='box-header padd-${position}' >
-        ${position == 'r' ? 'Tu' : 'Parl-Ai'}
+        ${position == 'r' ? 'Tu' : 'Parlam-(A)i'}
     </div>
     <p>
         ${text}

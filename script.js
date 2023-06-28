@@ -103,12 +103,17 @@ function onResult(e) {
     for (let i = e.resultIndex; i < e.results.length; i++) {
         if (e.results[i].isFinal) {
             sendMessage(e.results[i][0].transcript);
+            // pulisce il chatBox dopo 3 secondi
+            setTimeout(() => {
+                chatBox.value = '';
+            }, 3000);
         } else {
             interim_transcript += e.results[i][0].transcript;
             chatBox.value = interim_transcript;
         }
     }
 }
+
 
 function onError(e) {
     console.error(e.error);
