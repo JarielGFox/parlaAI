@@ -76,12 +76,12 @@ function sendMessage(text) {
 }
 
 chatButton.addEventListener('click', (event) => {
-    let text = event.target.previousElementSibling.value;
+    let text = chatBox.value;
     console.log(text);
 
 
     sendMessage(text);
-    event.target.previousElementSibling.value = '';
+    chatBox.value = '';
 
     // Controllare problema di logica e vedere perchè non riappare
     // chatInput.classList.add('hidden');
