@@ -150,3 +150,46 @@ button {
     pointer-events: none;
     opacity: 0.5;
 }
+
+.modal {
+    position: absolute;
+    display: none;
+    border: solid 2px steelblue;
+    border-radius: 5%;
+    padding: 12px;
+    background-color: antiquewhite;
+    height: 400px;
+    width: 370px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /* inserire stili, colore bg, position, ecc */
+}
+
+.modal p {
+    margin-top: 20px;
+    text-align: justify;
+}
+
+.modal img {
+    margin-top: 15px;
+    height: 50px;
+    width: 50px;
+}
+
+.modal button {
+    display: inline-block;
+    background-color: #838ef9;
+    color: antiquewhite;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border: none;
+    margin-top: 20px;
+}
+
+.modal-show {
+    display: block;
+}

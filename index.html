@@ -29,11 +29,13 @@
 
     </div>
 
+    <!-- Separatore pannello -->
     <div class="separatore"></div>
 
+    <!-- Controlli App -->
     <div id="chat-input" class="chat-input">
         <div class="chat-box">
-            <textarea id="chat-text" name="chat-text" rows="8" cols="100"></textarea>
+            <textarea id="chat-text" name="chat-text" rows="2" cols="100"></textarea>
             <div id="send">
                 <img src="./images/send.png" width="30" height="30" title="Invia messaggio">
             </div>
@@ -46,6 +48,17 @@
             <div id="shush">
                 <img src="./images/mute.png" width="30" height="30" title="Stoppa voce">
             </div>
+        </div>
+    </div>
+
+    <!-- Modale -->
+    <div id="intro-modal" class="modal">
+        <div class="modal-content">
+            <h2>Benvenuti in Parlam-(A)i!</h2>
+            <img src="./images/friendsAI.png" />
+            <p> Un prototipo di assistente vocale e testuale che utilizza l'API di openAI. Si tratta di una progressive
+                web app che permette di restituire risposte sia tramite l'utilizzo di microfono che di chat. </p>
+            <center><button id="close-modal">OK</button></center>
         </div>
     </div>
 

@@ -20,6 +20,10 @@ const clearHistory = document.querySelector('#clear-history');
 const muteButton = document.getElementById('shush');
 const separatore = document.querySelector('.separatore');
 
+// variabili modale
+const modalShut = document.getElementById('close-modal');
+const modalStart = document.getElementById('intro-modal');
+
 // textArea della chat
 const chatInput = document.getElementById('chat-input');
 const chatBox = document.getElementById('chat-text');
@@ -150,6 +154,11 @@ recognition.addEventListener('error', onError);
 
 muteButton.addEventListener('click', () => {
     speechSynthesis.cancel();
+});
+
+// event listener che chiude modale
+modalShut.addEventListener('click', function () {
+    modalStart.classList.remove('modal-show');
 });
 
 

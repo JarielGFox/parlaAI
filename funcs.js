@@ -1,8 +1,15 @@
+// Caricamento modale
+window.onload = function () {
+    document.getElementById('intro-modal').classList.add('modal-show');
+}
+
+//funzione per mandare messaggio, pusha il testo nell'array
 const sendMessage = () => {
     textBox.value.toLowerCase();
     testo.push(textBox.value.toLowerCase());
 }
 
+// funzione che crea i box di domanda e risposta 
 const appendMessage = (position, text, element) => {
     let divRichiesta = document.createElement('div');
 
