@@ -1,4 +1,4 @@
-import { APIKEY as API_KEY } from "./source.js";
+// import { APIKEY as API_KEY } from "./source.js";
 
 //VARIABILI API
 const API_URL = "https://api.openai.com/v1/chat/completions";
@@ -14,6 +14,9 @@ export const requestAPI = async (
     console.log(testo);
     try {
         //Chiamare le Api di Open AI
+
+        const API_KEY = sessionStorage.getItem('API_KEY');
+
         const response = await fetch(API_URL, {
             method: "POST",
             headers: {

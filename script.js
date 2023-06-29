@@ -11,6 +11,12 @@ speechSynthesis.addEventListener('voiceschanged', function () {
 
 // INIZIO VARIABILI CODICE
 
+// API KEY
+const apiKeyButton = document.getElementById('api-key-button');
+const apiKeyForm = document.getElementById('api-key-form');
+const apiKeyInput = document.getElementById('api-key-input');
+const submitApiKeyButton = document.getElementById('submit-api-key');
+
 // variabili ID e selettori
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const micBtn = document.getElementById('microphone');
@@ -148,6 +154,8 @@ function onError(e) {
     console.error(e.error);
 }
 
+// EVENTI
+
 micBtn.addEventListener('click', onStartListening);
 recognition.addEventListener('result', onResult);
 recognition.addEventListener('error', onError);
@@ -159,6 +167,18 @@ muteButton.addEventListener('click', () => {
 // event listener che chiude modale
 modalShut.addEventListener('click', function () {
     modalStart.classList.remove('modal-show');
+});
+
+//EVENTI API KEY
+
+apiKeyButton.addEventListener('click', () => {
+    apiKeyForm.style.display = 'block';
+});
+
+submitApiKeyButton.addEventListener('click', () => {
+    sessionStorage.setItem('API_KEY', apiKeyInput.value);
+    apiKeyForm.classList.remove('hidden');
+    apiKeyInput.value = '';
 });
 
 
