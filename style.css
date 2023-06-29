@@ -117,18 +117,6 @@ main {
   width: 60%;
 }
 
-
-button {
-    border: none;
-    background-color: #f71469;
-    border-radius: 8px;
-    cursor: pointer;
-    padding: 12px 12px;
-    color: whitesmoke;
-    margin: 0 6px;
-    width: 10%;
-    text-align: center;
-}
 #clear-history {
     width: 20%;
 }
@@ -158,13 +146,18 @@ button {
     border-radius: 5%;
     padding: 12px;
     background-color: antiquewhite;
-    height: 400px;
+    height: 500px;
     width: 370px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     /* inserire stili, colore bg, position, ecc */
+}
+
+.modal input {
+    width: 150px;
+    height: 35px;
 }
 
 .modal p {
@@ -188,6 +181,22 @@ button {
     font-size: 16px;
     border: none;
     margin-top: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#warning-p {
+    color: red;
+    font-weight: bold;
+}
+
+#submit-api-key {
+    background-color: darkred;
+    padding: 10px 10px;
+}
+
+#api-key-button {
+    background-color: darkred;
 }
 
 .modal-show {

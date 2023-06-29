@@ -172,12 +172,12 @@ modalShut.addEventListener('click', function () {
 //EVENTI API KEY
 
 apiKeyButton.addEventListener('click', () => {
-    apiKeyForm.style.display = 'block';
+    apiKeyForm.classList.remove('hidden');
 });
 
 submitApiKeyButton.addEventListener('click', () => {
     sessionStorage.setItem('API_KEY', apiKeyInput.value);
-    apiKeyForm.classList.remove('hidden');
+    apiKeyForm.classList.add('hidden');
     apiKeyInput.value = '';
 });
 
