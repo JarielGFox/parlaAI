@@ -17,14 +17,17 @@ const apiKeyForm = document.getElementById('api-key-form');
 const apiKeyInput = document.getElementById('api-key-input');
 const submitApiKeyButton = document.getElementById('submit-api-key');
 
-// variabili ID e selettori
+// variabili e selettori
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const separatore = document.querySelector('.separatore');
+const container = document.querySelector('.container');
+
+// variabili bottoni
 const micBtn = document.getElementById('microphone');
 const chatButton = document.getElementById('send');
-const container = document.querySelector('.container');
 const clearHistory = document.querySelector('#clear-history');
 const muteButton = document.getElementById('shush');
-const separatore = document.querySelector('.separatore');
+const modalShow = document.getElementById('info-button');
 
 // variabili modale
 const modalShut = document.getElementById('close-modal');
@@ -154,7 +157,7 @@ function onError(e) {
     console.error(e.error);
 }
 
-// EVENTI
+// EVENTI BOTTONI
 
 micBtn.addEventListener('click', onStartListening);
 recognition.addEventListener('result', onResult);
@@ -162,6 +165,11 @@ recognition.addEventListener('error', onError);
 
 muteButton.addEventListener('click', () => {
     speechSynthesis.cancel();
+});
+
+// bottone che mostra modale
+modalShow.addEventListener('click', function () {
+    modalStart.classList.add('modal-show');
 });
 
 // event listener che chiude modale

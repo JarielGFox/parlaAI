@@ -102,6 +102,11 @@ main {
     flex-wrap: nowrap;
 }
 
+.chat-box img {
+    height: 30px;
+    width: 30px;
+}
+
 .chat-box div {
     cursor: pointer;
 }
