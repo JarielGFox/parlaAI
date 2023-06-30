@@ -1,8 +1,12 @@
 # Parlam (A)i - WORK IN PROGRESS
 
+<p align="center"><img src="./images/icon.png" width="75" height="75"></p>
+
 Un prototipo di assistente vocale e testuale che utilizza l'API di openAI. Si tratta di una progressive web app che permette di restituire risposte sia tramite l'utilizzo di microfono che di chat.
 
-Una volta ottenuto il codice in locale, dovrete creare un file <b>"source.js"</b>, ed <b>inserire la seguente riga di codice</b>, dove inserire la vostra API KEY: <i>export const APIKEY = 'QUA VA LA API KEY';</i>
+# NOTA BENE:
+
+Per utilizzare correttamente la <b>PWA</b> dovete possedere <i>necessariamente</i> una <b>API KEY</b> ottenibile registrandovi al sito di OpenAI: <a>https://openai.com</a>. Dovete anche avere del credito per poter fare le chiamate.
 
 - Sviluppatori:
 
