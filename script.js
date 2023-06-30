@@ -51,26 +51,6 @@ let testo = [];
 // variabile per gestire i controlli
 let isRequestInProgress = false;
 
-// indice selezione voci
-let selectedVoiceIndex = 0;
-
-// FUNZIONE SELEZIONE VOCE
-function populateVoiceSelect() {
-    const voiceSelect = document.getElementById('voice-select');
-    voices.forEach((voice, i) => {
-        const option = document.createElement('option');
-        option.value = i;
-        option.text = voice.name;
-        voiceSelect.appendChild(option);
-    });
-}
-
-// evento selezione voce
-speechSynthesis.addEventListener('voiceschanged', function () {
-    voices = speechSynthesis.getVoices();
-    populateVoiceSelect();
-});
-
 function sendMessage(text) {
 
     if (isRequestInProgress) {
@@ -95,8 +75,10 @@ function sendMessage(text) {
     }, 1000)
 
     async function recuperaRisposta() {
-        const risposta = await requestAPI(testo);
+        const risposta = await requestAPI(text);
         console.log(risposta); //da togliere in produzione
+
+        testo.push(risposta); // pusha la risposta del bot nella cronologia chat
 
         let loader = document.querySelector('.loader');
         loader.parentElement.parentElement.remove();
@@ -143,6 +125,27 @@ chatButton.addEventListener('click', (event) => {
     // chatInput.classList.add('hidden');
     // console.log(chatInput);
 });
+
+// indice selezione voci
+let selectedVoiceIndex = 0;
+
+// FUNZIONE SELEZIONE VOCE
+function populateVoiceSelect() {
+    const voiceSelect = document.getElementById('voice-select');
+    voices.forEach((voice, i) => {
+        const option = document.createElement('option');
+        option.value = i;
+        option.text = voice.name;
+        voiceSelect.appendChild(option);
+    });
+}
+
+// evento selezione voce
+speechSynthesis.addEventListener('voiceschanged', function () {
+    voices = speechSynthesis.getVoices();
+    populateVoiceSelect();
+});
+
 
 // Inizializzazione
 const recognition = new SpeechRecognition(); // crea l'oggetto
