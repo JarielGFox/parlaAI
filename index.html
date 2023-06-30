@@ -24,8 +24,17 @@
 
 <body>
     <header>
-        <div class="header">
+        <div class="controls">
             <h1>PARLAM(A)I</h1>
+            <div id="shush">
+                <img src="./images/mute.png" title="Stoppa voce AI">
+            </div>
+            <div id="info-button">
+                <img src="./images/info.png" title="Opzioni">
+            </div>
+        </div>
+        <div class="header">
+            
         </div>
     </header>
 
@@ -50,25 +59,21 @@
             <div id="clear-history">
                 <img src="./images/reload.png" title="Cancella cronologia">
             </div>
-            <div id="shush">
-                <img src="./images/mute.png" title="Stoppa voce AI">
-            </div>
-            <div id="info-button">
-                <img src="./images/info.png" title="Opzioni">
-            </div>
+            
         </div>
     </div>
+    
 
     <!-- Modale -->
     <div id="intro-modal" class="modal">
         <div class="modal-content">
             <h2>Benvenuti in Parlam-(A)i!</h2>
-            <img src="./images/friendsAI.png" />
+            <img src="./images/modal-illustration.png" />
             <p> Un prototipo di assistente vocale e testuale che utilizza l'API di openAI. Si tratta di una progressive
                 web app che permette di restituire risposte sia tramite l'utilizzo di microfono che di chat. </p>
 
             <p id="warning-p">Se non si inserisce una propria API KEY, la Web APP non funzionerà correttamente!</p>
-            <center><button id="api-key-button">Inserire API Key</button></center>
+            <button id="api-key-button">Inserire API Key</button>
             <button id="close-modal">Vai alla APP</button>
             <div id="api-key-form" class="hidden">
                 <input type="text" id="api-key-input" placeholder="inserisci API Key">

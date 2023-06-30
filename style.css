@@ -5,6 +5,13 @@
     padding: 0;
 }
 
+:root {
+    --my-color-light: #fafafa;
+    --my-color-grey: rgb(237, 237, 237);
+    --my-color-brand: rgb(29,29,118);
+    --my-color-brand-cool: #838ef9;
+}
+
 html {
     background: linear-gradient(#838ef9, #3535ec);
     background-attachment: fixed;
@@ -18,21 +25,43 @@ main {
 
 /* HEADER */
 header{
-    background-color:  rgb(29,29,118);
+    background-color:  var(--my-color-brand);
 }
 .header {
     width: 100%;
-    height: 150px;
+    min-height: 150px;
     background: url('./images/parlai.png');
-    background-position: bottom;
+    background-position-y: bottom;
+    background-position-x: center;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 h1 {
     padding: 10px;
-    color: rgb(245, 250, 250);
+    color: var(--my-color-light);
     font-size: 2rem;
+    text-align: center;
+}
+h2 {
+    color: var(--my-color-brand);
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    width: 50%;
+    margin: 0 auto 5px;
+    align-items: center;
+    justify-content: center;
+}
+.controls img {
+    width: 30px; 
+    height: auto;
+}
+
+.controls img:hover {
+    cursor: pointer;
 }
 
 /* main */
@@ -122,11 +151,12 @@ h1 {
     max-width: 100%;
     padding: 6px;
     flex-wrap: nowrap;
+    gap: 10px;
 }
 
 .chat-box img {
     height: 30px;
-    width: 30px;
+    width: auto;
 }
 
 .chat-box div {
@@ -165,10 +195,10 @@ h1 {
 .modal {
     position: absolute;
     display: none;
-    border: solid 2px steelblue;
-    border-radius: 5%;
+    border: solid 2px var(--my-color-brand);
+    border-radius: 15px;
     padding: 30px 20px;
-    background-color: antiquewhite;
+    background-color: var(--my-color-grey);
     min-height: 500px;
     width: 375px;
     top: 50%;
@@ -190,14 +220,14 @@ h1 {
 
 .modal img {
     margin-top: 15px;
-    height: 50px;
-    width: 50px;
+    height: 100px;
+   
 }
 
 .modal button {
     display: inline-block;
-    background-color: #838ef9;
-    color: antiquewhite;
+    background-color: var(--my-color-brand-cool);
+    color: var(--my-color-light);
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -215,7 +245,9 @@ h1 {
 
 #submit-api-key {
     background-color: darkred;
-    padding: 10px 10px;
+    padding: 10px;
+    width: 100%;
+
 }
 
 #api-key-button {
@@ -231,9 +263,11 @@ h1 {
     
         width: 60%;
     }
-    .header {
-    
-    height: 210px;
-    
+
+    .controls {
+        width: 100%;
+    }
+    .modal {
+        width: 90%;
     }
   }
