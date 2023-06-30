@@ -28,6 +28,7 @@ const chatButton = document.getElementById('send');
 const clearHistory = document.querySelector('#clear-history');
 const muteButton = document.getElementById('shush');
 const modalShow = document.getElementById('info-button');
+const submitVoiceButton = document.getElementById('submit-voice');
 
 // variabili modale
 const modalShut = document.getElementById('close-modal');
@@ -52,6 +53,23 @@ let isRequestInProgress = false;
 
 // indice selezione voci
 let selectedVoiceIndex = 0;
+
+// FUNZIONE SELEZIONE VOCE
+function populateVoiceSelect() {
+    const voiceSelect = document.getElementById('voice-select');
+    voices.forEach((voice, i) => {
+        const option = document.createElement('option');
+        option.value = i;
+        option.text = voice.name;
+        voiceSelect.appendChild(option);
+    });
+}
+
+// evento selezione voce
+speechSynthesis.addEventListener('voiceschanged', function () {
+    voices = speechSynthesis.getVoices();
+    populateVoiceSelect();
+});
 
 function sendMessage(text) {
 
@@ -174,6 +192,11 @@ modalShow.addEventListener('click', function () {
 // event listener che chiude modale
 modalShut.addEventListener('click', function () {
     modalStart.classList.remove('modal-show');
+});
+
+// event listener che nasconde option value di selezione
+submitVoiceButton.addEventListener('click', function () {
+    selectionForm.classList.add('hidden');
 });
 
 // EVENTI SELEZIONE VOCE
