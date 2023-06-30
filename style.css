@@ -147,7 +147,7 @@ main {
 .modal {
     position: absolute;
     display: none;
-    border: solid 2px steelblue;
+    border: solid 2px brown;
     border-radius: 5%;
     padding: 12px;
     background-color: antiquewhite;
