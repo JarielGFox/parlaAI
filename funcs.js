@@ -3,6 +3,23 @@ window.onload = function () {
     document.getElementById('intro-modal').classList.add('modal-show');
 }
 
+// FUNZIONE SELEZIONE VOCE
+function populateVoiceSelect() {
+    const voiceSelect = document.getElementById('voice-select');
+    voices.forEach((voice, i) => {
+        const option = document.createElement('option');
+        option.value = i;
+        option.text = voice.name;
+        voiceSelect.appendChild(option);
+    });
+}
+
+// evento selezione voce
+speechSynthesis.addEventListener('voiceschanged', function () {
+    voices = speechSynthesis.getVoices();
+    populateVoiceSelect();
+});
+
 //funzione per mandare messaggio, pusha il testo nell'array
 const sendMessage = () => {
     textBox.value.toLowerCase();

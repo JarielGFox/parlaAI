@@ -33,6 +33,11 @@ const modalShow = document.getElementById('info-button');
 const modalShut = document.getElementById('close-modal');
 const modalStart = document.getElementById('intro-modal');
 
+// variabili selezione voce
+const voiceSelect = document.getElementById('voice-select');
+const pickVoiceButton = document.getElementById('pick-voice');
+const selectionForm = document.getElementById('selection-form');
+
 // textArea della chat
 const chatInput = document.getElementById('chat-input');
 const chatBox = document.getElementById('chat-text');
@@ -44,6 +49,9 @@ let testo = [];
 
 // variabile per gestire i controlli
 let isRequestInProgress = false;
+
+// indice selezione voci
+let selectedVoiceIndex = 0;
 
 function sendMessage(text) {
 
@@ -68,8 +76,6 @@ function sendMessage(text) {
         appendMessage('l', '<img class="loader" src="./images/miniloading.gif">', container);
     }, 1000)
 
-
-
     async function recuperaRisposta() {
         const risposta = await requestAPI(testo);
         console.log(risposta); //da togliere in produzione
@@ -86,15 +92,8 @@ function sendMessage(text) {
         utterance.volume = 1;
         utterance.rate = 1;
 
-        const femaleVoice = voices.find(function (voice) {
-            if (voice.name.includes('Elsa')) {
-                return true;
-            }
-        });
-
-        if (femaleVoice) { // dà la voce se trova un match
-            utterance.voice = femaleVoice;
-        }
+        // imposta la voce su quella selezionata
+        utterance.voice = voices[selectedVoiceIndex];
 
         //facciamo parlare la nostra AI
         speechSynthesis.speak(utterance);
@@ -175,6 +174,19 @@ modalShow.addEventListener('click', function () {
 // event listener che chiude modale
 modalShut.addEventListener('click', function () {
     modalStart.classList.remove('modal-show');
+});
+
+// EVENTI SELEZIONE VOCE
+
+// mostra le voci da scegliere al click del bottone preposto
+pickVoiceButton.addEventListener('click', function () {
+    selectionForm.classList.remove('hidden');
+})
+
+// stora l'indice della voce selezionata
+voiceSelect.addEventListener('change', function () {
+    selectedVoiceIndex = this.value;  // Store the selected voice index
+    console.log(this.value);  // Log the selected voice index
 });
 
 //EVENTI API KEY
