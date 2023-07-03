@@ -44,6 +44,13 @@ export const requestAPI = async (
 
     } catch (error) {
         console.log('Controlla il credito dell\'API o il suo server status.', error);
+        separatore.classList.remove('hidden');
+        separatore.innerHTML = 'Assicurati di aver inserito correttamente l\'API KEY o di avere credito sufficiente.';
+
+        setTimeout(() => {
+            separatore.innerHTML = '';
+            separatore.classList.add('hidden');
+        }, 15000);
 
         return;
     }

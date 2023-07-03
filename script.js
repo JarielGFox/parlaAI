@@ -5,8 +5,6 @@ import { requestAPI } from "./api.js";
 let voices = [];
 speechSynthesis.addEventListener('voiceschanged', function () {
     voices = speechSynthesis.getVoices();
-    // in console stampiamo l'elenco delle voci possibili da utilizzare
-    console.log(voices);
 })
 
 // INIZIO VARIABILI CODICE
@@ -76,7 +74,7 @@ function sendMessage(text) {
 
     async function recuperaRisposta() {
         const risposta = await requestAPI(text);
-        console.log(risposta); //da togliere in produzione
+        // console.log(risposta); //da togliere in produzione
 
         testo.push(risposta); // pusha la risposta del bot nella cronologia chat
 
@@ -109,21 +107,17 @@ function sendMessage(text) {
     }
 
 
-    console.log(testo); //da togliere in produzione
+    // console.log(testo); //da togliere in produzione
     recuperaRisposta();
 }
 
 chatButton.addEventListener('click', (event) => {
     let text = chatBox.value;
-    console.log(text);
+    // console.log(text);
 
 
     sendMessage(text);
     chatBox.value = '';
-
-    // Controllare problema di logica e vedere perchè non riappare
-    // chatInput.classList.add('hidden');
-    // console.log(chatInput);
 });
 
 // indice selezione voci
@@ -230,11 +224,13 @@ submitApiKeyButton.addEventListener('click', () => {
 
 // tasto pulisci cronologia
 clearHistory.addEventListener('click', () => {
+    separatore.classList.remove('hidden');
     testo = [];
     container.innerHTML = "";
     separatore.innerHTML = 'Congratulazioni, cronologia pulita correttamente.';
 
     setTimeout(() => {
         separatore.innerHTML = '';
+        separatore.classList.add('hidden');
     }, 3000);
 });
