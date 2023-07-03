@@ -26,11 +26,9 @@ main {
 
 .separatore {
     width: 50%;
-    height: 50%;
-    margin-top: 50px;
-    margin: auto;
-    color: darkred;
-    background-color: chocolate;
+    height: 100px;
+    margin-top: 200px;
+    color: whitesmoke;
 }
 
 /***************

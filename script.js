@@ -49,6 +49,9 @@ let testo = [];
 // variabile per gestire i controlli
 let isRequestInProgress = false;
 
+// per gestire errori async
+let risposta;
+
 function sendMessage(text) {
 
     if (isRequestInProgress) {
@@ -73,7 +76,25 @@ function sendMessage(text) {
     }, 1000)
 
     async function recuperaRisposta() {
-        const risposta = await requestAPI(text);
+        try {
+            risposta = await requestAPI(text);
+        } catch (error) {
+            separatore.innerHTML = 'Assicurati di aver inserito correttamente l\'API KEY o di avere credito sufficiente.';
+
+            setTimeout(() => {
+                container.innerHTML = '';
+                separatore.innerHTML = '';
+            }, 15000);
+
+            micBtn.classList.remove('disabled');
+            chatButton.classList.remove('disabled');
+            muteButton.classList.remove('disabled');
+            clearHistory.classList.remove('disabled');
+            chatBox.disabled = false;
+            isRequestInProgress = false;
+
+        }
+
         // console.log(risposta); //da togliere in produzione
 
         testo.push(risposta); // pusha la risposta del bot nella cronologia chat
@@ -205,8 +226,8 @@ pickVoiceButton.addEventListener('click', function () {
 
 // stora l'indice della voce selezionata
 voiceSelect.addEventListener('change', function () {
-    selectedVoiceIndex = this.value;  // Store the selected voice index
-    console.log(this.value);  // Log the selected voice index
+    selectedVoiceIndex = this.value;  // Salva la voce selezionata
+    // console.log(this.value);  // Logga in console l'indice della voce scelta
 });
 
 //EVENTI API KEY
@@ -224,13 +245,11 @@ submitApiKeyButton.addEventListener('click', () => {
 
 // tasto pulisci cronologia
 clearHistory.addEventListener('click', () => {
-    separatore.classList.remove('hidden');
     testo = [];
     container.innerHTML = "";
     separatore.innerHTML = 'Congratulazioni, cronologia pulita correttamente.';
 
     setTimeout(() => {
         separatore.innerHTML = '';
-        separatore.classList.add('hidden');
     }, 3000);
 });

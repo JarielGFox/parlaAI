@@ -1,5 +1,3 @@
-// import { APIKEY as API_KEY } from "./source.js";
-
 //VARIABILI API
 const API_URL = "https://api.openai.com/v1/chat/completions";
 const MODEL = "gpt-3.5-turbo";
@@ -11,7 +9,7 @@ const frequency_penalty = 2.0;
 export const requestAPI = async (
     testo
 ) => {
-    console.log(testo);
+    // console.log(testo);
     try {
         //Chiamare le Api di Open AI
 
@@ -27,7 +25,7 @@ export const requestAPI = async (
                 model: MODEL,
                 messages: [
                     {
-                        'role': `system`,
+                        'role': `assistant`,
                         'content': `${testo}`,
                     }
                 ],
@@ -44,15 +42,7 @@ export const requestAPI = async (
 
     } catch (error) {
         console.log('Controlla il credito dell\'API o il suo server status.', error);
-        separatore.classList.remove('hidden');
-        separatore.innerHTML = 'Assicurati di aver inserito correttamente l\'API KEY o di avere credito sufficiente.';
-
-        setTimeout(() => {
-            separatore.innerHTML = '';
-            separatore.classList.add('hidden');
-        }, 15000);
-
-        return;
+        throw new Error('API error');
     }
 
 }
