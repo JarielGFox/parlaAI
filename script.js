@@ -41,6 +41,12 @@ const selectionForm = document.getElementById('selection-form');
 const chatInput = document.getElementById('chat-input');
 const chatBox = document.getElementById('chat-text');
 
+// oggetto di stato per il management della modale
+let state = {
+    isVoiceSelectVisible: false,
+    isApiKeyFormVisible: false,
+}
+
 // da qui iniziano funzioni del "chatbot"
 
 // l'array della chat con l'API
@@ -192,6 +198,22 @@ function onError(e) {
     console.error(e.error);
 }
 
+// funzione per gestione stato bottoni modale
+
+const updateFormVisibility = () => {
+    if (state.isVoiceSelectVisible) {
+        selectionForm.classList.remove('hidden');
+    } else {
+        selectionForm.classList.add('hidden');
+    }
+
+    if (state.isApiKeyFormVisible) {
+        apiKeyForm.classList.remove('hidden');
+    } else {
+        apiKeyForm.classList.add('hidden');
+    }
+}
+
 // EVENTI BOTTONI
 
 micBtn.addEventListener('click', onStartListening);
@@ -214,14 +236,17 @@ modalShut.addEventListener('click', function () {
 
 // event listener che nasconde option value di selezione
 submitVoiceButton.addEventListener('click', function () {
-    selectionForm.classList.add('hidden');
+    state.isVoiceSelectVisible = false;
+    updateFormVisibility();
 });
 
 // EVENTI SELEZIONE VOCE
 
 // mostra le voci da scegliere al click del bottone preposto
 pickVoiceButton.addEventListener('click', function () {
-    selectionForm.classList.remove('hidden');
+    state.isVoiceSelectVisible = true;
+    state.isApiKeyFormVisible = false;
+    updateFormVisibility();
 })
 
 // stora l'indice della voce selezionata
@@ -233,13 +258,16 @@ voiceSelect.addEventListener('change', function () {
 //EVENTI API KEY
 
 apiKeyButton.addEventListener('click', () => {
-    apiKeyForm.classList.remove('hidden');
+    state.isApiKeyFormVisible = true;
+    state.isVoiceSelectVisible = false;
+    updateFormVisibility();
 });
 
 submitApiKeyButton.addEventListener('click', () => {
     sessionStorage.setItem('API_KEY', apiKeyInput.value);
-    apiKeyForm.classList.add('hidden');
+    state.isApiKeyFormVisible = false;
     apiKeyInput.value = '';
+    updateFormVisibility();
 });
 
 

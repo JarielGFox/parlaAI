@@ -146,13 +146,13 @@ main {
 }
 
 .modal {
-    position: absolute;
+    position: fixed;
     display: none;
     border: solid 2px brown;
     border-radius: 5%;
     padding: 12px;
     background-color: antiquewhite;
-    height: 625px;
+    height: 550px;
     width: 370px;
     top: 50%;
     left: 50%;
